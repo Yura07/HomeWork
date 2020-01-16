@@ -1,29 +1,20 @@
 package files;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class Methods implements Serializable {
-    public void serializable(Employee employee, String fileName) {
-        try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)))) {
-            out.writeObject(employee);
-        } catch (IOException e) {
-            System.out.println("File cannot be opened");
-            e.printStackTrace();
-        }
+    public void serializable(Employee employee, String fileName) throws IOException {
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(fileName));
+        outputStream.writeObject(employee);
     }
 
-    public Employee deserializable(String fileName) {
-        Employee employee = null;
-        try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
-            employee = (Employee) in.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return employee;
+
+    public void deserializable(String fileName) throws IOException, ClassNotFoundException {
+        ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(fileName));
+        Employee employee = (Employee)inputStream.readObject();
+        System.out.println(employee.toString());
     }
+
 }

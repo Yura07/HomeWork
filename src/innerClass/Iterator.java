@@ -1,7 +1,7 @@
 package innerClass;
 
-public interface Iterator{
-boolean hasNext();
-Object next();
+public interface Iterator extends Iterable {
+void hasNext();
+void next();
 
 }

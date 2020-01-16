@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         List<Integer> integerList = new ArrayList<>();
         String string = new String("12");
-        integerList.add(Integer.valueOf(string));
+        integerList.add(Integer.parseInt(string));
         System.out.println(integerList);
 
     }
