@@ -43,6 +43,6 @@ public class Employee implements Serializable {
                 "name='" + name + '\'' +
                 ", id=" + id +
                 ", salary=" + salary +
-                '}';
+                "}\n";
     }
 }
