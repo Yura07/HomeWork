@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Employee implements Serializable {
     private String name;
     private Integer id;
-    private Integer salary;
+    private transient Integer salary;
 
     public Employee(String name, Integer id, Integer salary) {
         this.name = name;
